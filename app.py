@@ -54,7 +54,9 @@ search = st.text_input("🔍 キーワードで検索", "")
 if search:
     search_normalized = normalize_text(search)
     mask = pd.Series(False, index=df.index)
-    for col in ["頭文字", "アーティスト名", "アルバム名", "曲名", "所在"]:
-        mask |= df[f"検索用_{col}"].str.contains(search_normalized, na=False)
-
+    for col in ['頭文字', 'アーティスト名', 'アルバム名', '曲名', '所在']:
+        key = f"検索用_{col}"
+        if key in df.columns:
+            mask |= df[key].str.contains(search_normalized, na=False)
+    df = df[mask]
         
