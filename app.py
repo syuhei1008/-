@@ -14,7 +14,7 @@ def normalize_text(text):
 excel_path = "新さがすん.xlsx"
 df = pd.read_excel(excel_path, header=4)
 
-st.write("読み込まれた列:", df.columns.tolist())
+
 
 # 検索対象の列（存在する列のみ使う）
 search_columns = ['頭文字', 'アーティスト名', 'アルバム名', '曲名', '所在']
