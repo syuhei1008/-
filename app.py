@@ -54,5 +54,6 @@ if search:
     search_normalized = normalize_text(search)
     mask = pd.Series(False, index=df.index)
     for col in ["頭文字", "アーティスト名", "アルバム名", "曲名", "所在"]:
-        mask |= df[f"検索用_{col_}
+        mask |= df[f"検索用_{col}"].str.contains(search_normalized, na=False)
+
         
