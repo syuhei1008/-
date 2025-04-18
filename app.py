@@ -12,7 +12,8 @@ def normalize_text(text):
 
 # Excelファイル読み込み
 excel_path = "新さがすん.xlsx"
-df = pd.read_excel(excel_path)
+df = pd.read_excel(excel_path, header=4)
+
 st.write("読み込まれた列:", df.columns.tolist())
 
 # 検索対象の列（存在する列のみ使う）
