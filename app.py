@@ -35,9 +35,23 @@ col1, col2 = st.columns([5, 1])
 with col1:
     search_input = st.text_input("🔍 キーワードで検索", key="search_input")
 
+# セッションキーを定義（上で使っている "search_input" と合わせる）
+search_input_key = "search_input"
+
+# もしセッションステートに存在しない場合は初期化
+if search_input_key not in st.session_state:
+    st.session_state[search_input_key] = ""
+
+# 🔍 検索欄とクリアボタンの並び表示
+col1, col2 = st.columns([5, 1])
+
+with col1:
+    search_input = st.text_input("🔍 キーワードで検索", key=search_input_key)
+
 with col2:
     if st.button("❌ クリア"):
-        st.session_state.search_input = ""
+        st.session_state[search_input_key] = ""
+        st.experimental_rerun()  # ← 入力クリア後にページを再描画！
 
 
 # 検索処理
