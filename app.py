@@ -45,8 +45,7 @@ if search_input_key not in st.session_state:
 # 🔍 検索欄とクリアボタンの並び表示
 col1, col2 = st.columns([5, 1])
 
-with col1:
-    search_input = st.text_input("🔍 キーワードで検索", key=search_input_key)
+
 
 with col2:
     if st.button("❌ クリア"):
