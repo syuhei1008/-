@@ -29,7 +29,16 @@ for col in search_columns:
 st.markdown("## 🎵 さがすん")
 
 # 検索入力
-search_input = st.text_input("🔍 キーワードで検索")
+# 検索入力＋クリアボタン
+col1, col2 = st.columns([5, 1])
+
+with col1:
+    search_input = st.text_input("🔍 キーワードで検索", key="search_input")
+
+with col2:
+    if st.button("❌ クリア"):
+        st.session_state.search_input = ""
+
 
 # 検索処理
 if search_input:
