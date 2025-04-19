@@ -7,7 +7,7 @@ def normalize_text(text):
     if pd.isna(text):
         return ''
     text = str(text)
-    text = unicode_normalize('NFKC', text)  # 全角・半角を統一
+    text = unicodedata.normalize('NFKC', text)  # 全角・半角を統一
     text = jaconv.kata2hira(text)           # カタカナ→ひらがな に変換
     return text.lower()                     # 小文字化
 
