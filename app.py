@@ -50,7 +50,7 @@ search_input = st.session_state[search_input_key]
 with col2:
     if st.button("❌ クリア"):
         st.session_state[search_input_key] = ""
-        st.experimental_rerun()  # ← 入力クリア後にページを再描画！
+        st.rerun()  # ← 入力クリア後にページを再描画！
 
 
 # 検索処理
