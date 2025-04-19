@@ -1,14 +1,15 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
-
+import jaconv
 # テキスト正規化（全角→半角、ひらがな⇄カタカナも統一、アルファベット小文字化など）
 def normalize_text(text):
     if pd.isna(text):
         return ''
     text = str(text)
-    text = unicodedata.normalize('NFKC', text)  # 全角を半角などに統一
-    return text.lower()  # 小文字化
+    text = unicode_normalize('NFKC', text)  # 全角・半角を統一
+    text = jaconv.kata2hira(text)           # カタカナ→ひらがな に変換
+    return text.lower()                     # 小文字化
 
 # Excelファイル読み込み
 excel_path = "新さがすん.xlsx"
