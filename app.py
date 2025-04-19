@@ -32,8 +32,6 @@ st.markdown("## 🎵 さがすん")
 # 検索入力＋クリアボタン
 col1, col2 = st.columns([5, 1])
 
-with col1:
-    search_input = st.text_input("🔍 キーワードで検索", key="search_input")
 
 # セッションキーを定義（上で使っている "search_input" と合わせる）
 search_input_key = "search_input"
@@ -45,6 +43,8 @@ if search_input_key not in st.session_state:
 # 🔍 検索欄とクリアボタンの並び表示
 col1, col2 = st.columns([5, 1])
 
+with col1:
+    search_input = st.text_input("🔍 キーワードで検索", key="search_input")
 
 
 with col2:
