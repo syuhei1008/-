@@ -1,15 +1,14 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
-import jaconv
+
 # テキスト正規化（全角→半角、ひらがな⇄カタカナも統一、アルファベット小文字化など）
 def normalize_text(text):
     if pd.isna(text):
         return ''
     text = str(text)
-    text = unicodedata.normalize('NFKC', text)  # 全角・半角を統一
-    text = jaconv.kata2hira(text)           # カタカナ→ひらがな に変換
-    return text.lower()                     # 小文字化
+    text = unicodedata.normalize('NFKC', text)  # 全角を半角などに統一
+    return text.lower()  # 小文字化
 
 # Excelファイル読み込み
 excel_path = "新さがすん.xlsx"
@@ -29,29 +28,7 @@ for col in search_columns:
 st.markdown("## 🎵 さがすん")
 
 # 検索入力
-# 検索入力＋クリアボタン
-col1, col2 = st.columns([5, 1])
-
-
-# セッションキーを定義（上で使っている "search_input" と合わせる）
-search_input_key = "search_input"
-
-
-# 🔍 検索欄とクリアボタンの並び表示
-col1, col2 = st.columns([5, 1])
-
-
-search_input_key =st.text_input("🔍 キーワードで検索", key=search_input_key)
-# もしセッションステートに存在しない場合は初期化
-if search_input_key not in st.session_state:
-    st.session_state[search_input_key] = ""
-search_input = st.session_state[search_input_key]
-
-with col2:
-    if st.button("❌ クリア"):
-        st.session_state[search_input_key] = ""
-        st.rerun()  # ← 入力クリア後にページを再描画！
-
+search_input = st.text_input("🔍 キーワードで検索")
 
 # 検索処理
 if search_input:
