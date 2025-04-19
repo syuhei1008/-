@@ -41,7 +41,7 @@ search_input_key = "search_input"
 col1, col2 = st.columns([5, 1])
 
 
-     st.text_input("🔍 キーワードで検索", key=search_input_key)
+st.text_input("🔍 キーワードで検索", key=search_input_key)
 # もしセッションステートに存在しない場合は初期化
 if search_input_key not in st.session_state:
     st.session_state[search_input_key] = ""
