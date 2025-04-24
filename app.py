@@ -55,7 +55,7 @@ else:
     df_filtered = df
 
 # データ表示（検索用列は非表示）
-st.write("データ件数:", len(df_filtered))
+st.write("曲数:", len(df_filtered))
 st.write("アルバム数:", df_filtered["アルバム名"].nunique())
 st.dataframe(df_filtered[search_columns])
 
