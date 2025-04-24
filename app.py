@@ -19,6 +19,7 @@ url = "https://script.google.com/macros/s/AKfycbxGjx76Hxp85Hw-3-8h0hwl0InhqAY7Be
 
 # データ取得
 response = requests.get(url)
+print(response.text)
 df = pd.read_json(io.StringIO(response.text))
 
 
