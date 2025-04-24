@@ -51,7 +51,17 @@ else:
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
 
-st.write(df.columns)  # ← この行を有効にして実行
+# デバッグ用: カラム名の確認
+st.write("カラム一覧:", df.columns.tolist())
+
+# 検索対象カラムの正規化結果の確認
+for col in search_columns:
+    try:
+        st.write(f"{col} → 検索用_{col}")
+        st.write(df[[col, f"検索用_{col}"]].head())
+    except Exception as e:
+        st.error(f"カラム {col} に問題あり: {e}")
+
 
 
 
