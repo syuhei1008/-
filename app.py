@@ -51,9 +51,8 @@ else:
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
 
-# デバッグ用（必要に応じてコメントアウト可）
-# st.write(df.head())
-# st.write(df.columns)
+st.write(df.columns)  # ← この行を有効にして実行
+
 
 
 
