@@ -58,4 +58,6 @@ else:
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
 
+st.write(df.head())  # データの先頭5行を表示
+st.write(df.columns)  # カラム名を確認
 
