@@ -56,23 +56,10 @@ else:
 
 # データ表示（検索用列は非表示）
 st.write("データ件数:", len(df_filtered))
-st.dataframe(df_filtered[search_columns])
 
 
 
-# 検索対象カラムの正規化結果の確認
-for col in search_columns:
-    try:
-        st.write(f"{col} → 検索用_{col}")
-        st.write(df[[col, f"検索用_{col}"]].head())
-    except Exception as e:
-        st.error(f"カラム {col} に問題あり: {e}")
 
-
-st.write("カラム一覧:", df.columns.tolist())
-response = requests.get(url)
-df = pd.read_json(io.StringIO(response.text), orient='records')
-st.write("列名:", df.columns)  # ← これで ['頭文字', 'アーティスト名', ...] が出ればOK
 
 
 
