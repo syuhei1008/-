@@ -22,12 +22,6 @@ response = requests.get(url)
 print(response.text)
 df = pd.read_json(io.StringIO(response.text), orient='records')
 
-
-
-
-
-
-
 # 検索対象の列（存在する列のみ使う）
 search_columns = ['頭文字', 'アーティスト名', 'アルバム名', '曲名', '所在']
 search_columns = [col for col in search_columns if col in df.columns]
@@ -38,6 +32,12 @@ for col in search_columns:
 
 # Streamlit UI
 st.markdown("## 🎵 さがすん")
+
+# 不要な行をスキップして、正しいカラム名とデータを抽出
+df_raw = pd.read_json(io.StringIO(response.text))  # JSON 取得済みの場合
+df = df_raw.iloc[5:].reset_index(drop=True)        # データは6行目（index 5）から
+df.columns = df.iloc[0]                            # 本来のカラム名を設定
+df = df[1:].reset_index(drop=True)                 # ヘッダー行を除外してデータだけに
 
 # 検索入力
 search_input = st.text_input("🔍 キーワードで検索")
