@@ -15,8 +15,7 @@ def normalize_text(text):
     return text.lower()                     # 小文字化
 
 # スプレッドシートのApps Script公開URL
-url = "https://script.google.com/macros/s/AKfycbzyLlaypVoPB1sL4Gyg0AxlimODGL8L7RiXOkFLRZAAVZrFuQ7yl0N0P33gDFGXYHwA/exec"
-
+url = https://script.google.com/macros/s/AKfycbxGjx76Hxp85Hw-3-8h0hwl0InhqAY7BegrabQaXwSONrMOLu9l2nuDlySSVa22UM4/exec
 # データ取得
 response = requests.get(url)
 df = pd.read_json(io.StringIO(response.text))
@@ -56,4 +55,4 @@ else:
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
 
-st.write(response.text)
+
