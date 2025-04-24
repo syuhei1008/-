@@ -15,8 +15,7 @@ def normalize_text(text):
     return text.lower()                     # 小文字化
 
 # スプレッドシートのApps Script公開URL
-url = "df = pd.read_json(io.StringIO(response.text), orient='records')
-"
+url = "df = pd.read_json(io.StringIO(response.text), orient='records')"
 
 # データ取得
 response = requests.get(url)
