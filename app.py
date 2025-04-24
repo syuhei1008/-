@@ -21,6 +21,13 @@ url = "https://script.google.com/macros/s/AKfycbx6yH3M8l_eQPhx8aTUn3DUEebIUM9GM0
 response = requests.get(url)
 df = pd.read_json(io.StringIO(response.text), orient='records')
 
+# 曲名が改行で区切られている場合、行を展開する
+if '曲名' in df.columns:
+    df = df.dropna(subset=['曲名'])
+    df['曲名'] = df['曲名'].astype(str)
+    df = df.assign(曲名=df['曲名'].str.split('\n')).explode('曲名').reset_index(drop=True)
+
+
 # 検索対象の列（存在する列のみ使用）
 search_columns = ['頭文字', 'アーティスト名', 'アルバム名', '曲名', '所在']
 search_columns = [col for col in search_columns if col in df.columns]
