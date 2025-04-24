@@ -15,7 +15,7 @@ def normalize_text(text):
     return text.lower()                         # 小文字化
 
 # スプレッドシートのApps Script公開URL
-url = "https://script.google.com/macros/s/AKfycbx6yH3M8l_eQPhx8aTUn3DUEebIUM9GM02IYuSBUwtnZNdXbnB0lzh0TDCeqUbls6wU/exec"
+url = "https://script.google.com/macros/s/AKfycbwbdFEk_z6BYU8lZ-hWKtarlmo3UJACr2oQYOUiJhGQbigiNOxewJ8rsECAHnNDzf_h/exec"
 
 # データ取得
 response = requests.get(url)
