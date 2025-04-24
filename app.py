@@ -58,8 +58,7 @@ else:
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
 
-# デバッグ用: カラム名の確認
-st.write("カラム一覧:", df.columns.tolist())
+
 
 # 検索対象カラムの正規化結果の確認
 for col in search_columns:
@@ -70,6 +69,10 @@ for col in search_columns:
         st.error(f"カラム {col} に問題あり: {e}")
 
 
+st.write("カラム一覧:", df.columns.tolist())
+response = requests.get(url)
+df = pd.read_json(io.StringIO(response.text), orient='records')
+st.write("列名:", df.columns)  # ← これで ['頭文字', 'アーティスト名', ...] が出ればOK
 
 
 
