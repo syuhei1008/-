@@ -55,3 +55,5 @@ else:
 # データフレームの表示（検索用の列は非表示）
 st.write("データ件数:", len(df_filtered))
 st.dataframe(df_filtered[search_columns])
+
+st.write(response.text)
