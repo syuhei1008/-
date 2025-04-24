@@ -59,19 +59,6 @@ st.write("曲数:", len(df_filtered))
 st.write("アルバム数:", df_filtered["アルバム名"].nunique())
 st.dataframe(df_filtered[search_columns])
 
-# デバッグ用：フィルタ後のカラム確認
-st.write("カラム一覧:", df_filtered.columns.tolist())
-
-# 曲数表示
-st.write("🎵 曲数:", len(df_filtered))
-
-# アルバム数表示（存在チェック付き）
-if "アルバム名" in df_filtered.columns:
-    st.write("💿 アルバム数:", df_filtered["アルバム名"].nunique())
-else:
-    st.warning("⚠️ 「アルバム名」カラムが見つかりません")
-
-
 
 
 
