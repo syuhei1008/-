@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import unicodedata
 import jaconv
+import requests
+import io
 # テキスト正規化（全角→半角、ひらがな⇄カタカナも統一、アルファベット小文字化など）
 def normalize_text(text):
     if pd.isna(text):
@@ -12,10 +14,15 @@ def normalize_text(text):
     text = jaconv.kata2hira(text)           # カタカナ→ひらがな に変換
     return text.lower()                     # 小文字化
 
+# スプレッドシートのApps Script公開URL
+url = "https://script.google.com/macros/s/AKfycbzyLlaypVoPB1sL4Gyg0AxlimODGL8L7RiXOkFLRZAAVZrFuQ7yl0N0P33gDFGXYHwA/exec"
 
-# Excelファイル読み込み
-excel_path = "新さがすん.xlsx"
-df = pd.read_excel(excel_path, header=4)
+# データ取得
+response = requests.get(url)
+df = pd.read_json(io.StringIO(response.text))
+
+
+
 
 
 
