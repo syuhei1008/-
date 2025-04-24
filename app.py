@@ -15,12 +15,14 @@ def normalize_text(text):
     return text.lower()                     # 小文字化
 
 # スプレッドシートのApps Script公開URL
-url = "https://script.google.com/macros/s/AKfycbxGjx76Hxp85Hw-3-8h0hwl0InhqAY7BegrabQaXwSONrM0Lu9l2nuDlysSVa22UM4/exec"
+url = "df = pd.read_json(io.StringIO(response.text), orient='records')
+"
 
 # データ取得
 response = requests.get(url)
 print(response.text)
-df = pd.read_json(io.StringIO(response.text))
+df = pd.read_json(io.StringIO(response.text), orient='records')
+
 
 
 
